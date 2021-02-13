@@ -68,6 +68,7 @@
 				<Item Name="UI Data.ctl" Type="VI" URL="../controls/UI Data.ctl"/>
 			</Item>
 			<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
+			<Item Name="QMH DATA.lvclass" Type="LVClass" URL="../QMH DATA/QMH DATA.lvclass"/>
 		</Item>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
