@@ -12,9 +12,11 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
-		<Item Name="launcher.vi" Type="VI" URL="../launcher.vi"/>
+		<Item Name="Launcher.vi" Type="VI" URL="../Launcher.vi"/>
+		<Item Name="Businness Logic.lvlib" Type="Library" URL="../Businness Logic/Businness Logic.lvlib"/>
 		<Item Name="Acquisition.lvlib" Type="Library" URL="../Acquisition/Acquisition.lvlib"/>
-		<Item Name="UI.lvlib" Type="Library" URL="../UI/UI.lvlib"/>
+		<Item Name="Logging.lvlib" Type="Library" URL="../Logging/Logging.lvlib"/>
+		<Item Name="User Interface.lvlib" Type="Library" URL="../User Interface/User Interface.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="Actor Framework.lvlib" Type="Library" URL="/&lt;vilib&gt;/ActorFramework/Actor Framework.lvlib"/>
