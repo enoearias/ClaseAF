@@ -7,6 +7,7 @@
 	<Item Name="Messages for this Actor" Type="Folder">
 		<Item Name="Data Aquired Msg.lvclass" Type="LVClass" URL="../Businness Logic Messages/Data Aquired Msg/Data Aquired Msg.lvclass"/>
 		<Item Name="Start_Stop Aq Msg.lvclass" Type="LVClass" URL="../Businness Logic Messages/Start_Stop Aq Msg/Start_Stop Aq Msg.lvclass"/>
+		<Item Name="Update Status Msg.lvclass" Type="LVClass" URL="../Businness Logic Messages/Update Status Msg/Update Status Msg.lvclass"/>
 	</Item>
 	<Item Name="Businness Logic.lvclass" Type="LVClass" URL="../Businness Logic/Businness Logic.lvclass"/>
 </Library>
