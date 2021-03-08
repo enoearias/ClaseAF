@@ -5,8 +5,7 @@
 	<Property Name="NI.Lib.Version" Type="Str">1.0.0.0</Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Item Name="Messages for this Actor" Type="Folder">
-		<Item Name="Set HW ID Msg.lvclass" Type="LVClass" URL="../../Controls Messages/Set HW ID Msg/Set HW ID Msg.lvclass"/>
-		<Item Name="Simulated Error Msg.lvclass" Type="LVClass" URL="../../Controls Messages/Simulated Error Msg/Simulated Error Msg.lvclass"/>
+		<Item Name="Draw Actor Core on Subpanel Msg.lvclass" Type="LVClass" URL="../../Si UI Messages/Draw Actor Core on Subpanel Msg/Draw Actor Core on Subpanel Msg.lvclass"/>
 	</Item>
-	<Item Name="Controls.lvclass" Type="LVClass" URL="../Controls.lvclass"/>
+	<Item Name="Si UI.lvclass" Type="LVClass" URL="../Si UI.lvclass"/>
 </Library>

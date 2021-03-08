@@ -1,0 +1,873 @@
+= demo oop
+55555 <35463456>
+:doctype: book
+:toc: left
+:imagesdir: Images
+:sectnums: 
+:toclevels: 2
+:sectanchors: 
+:sectlinks: 
+:chapter-label: Section
+
+== Project description
+
+No description found (add content in project description)
+
+== Classes
+
+This section describes the classes contained in the project.
+
+=== Classes overview
+
+This project contains 8 classes and 1 interface.
+
+.Classes list
+[cols="<.<1d,<.<1d", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Classes|Interfaces
+
+|<<Arduino.lvclass>>
+|<<Mediciones.lvclass>>
+
+|<<Contador Actor.lvclass>>
+|
+
+|<<Fuente de poder.lvclass>>
+|
+
+|<<Generador de funciones.lvclass>>
+|
+
+|<<Instrumento feo.lvclass>>
+|
+
+|<<Instrumento.lvclass>>
+|
+
+|<<Multimetro.lvclass>>
+|
+
+|<<Osciloscopio.lvclass>>
+|
+|===
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "Arduino" {
+{method} +Get Volts()
+
+}
+"Mediciones" <|.. "Arduino"
+
+
+
+class "Contador Actor" {
+{field} -Cuenta : Double Float
+{static} {method} +Contador Actor_Init()
+{method} +CleanUp()
+{method} +Incremento()
+{method} +Decremento()
+{method} +Show Dialog()
+
+}
+
+
+class "Fuente de poder" {
+{field} -None : Boolean
+{static} {method} +Fuente de poder_Init()
+{method} +CleanUp()
+
+}
+"Instrumento" <|-- "Fuente de poder"
+
+
+class "Generador de funciones" {
+{field} -None : Boolean
+{method} +Set VPP()
+
+}
+"Instrumento" <|-- "Generador de funciones"
+
+
+class "Instrumento feo" {
+{method} +Get Volts()
+
+}
+"Mediciones" <|.. "Instrumento feo"
+
+
+
+class "Instrumento" {
+{field} +VISA resource name : NoType
+{method} +Close()
+{method} +Initialize()
+
+}
+
+
+interface "Mediciones" {
+{method} +Get Volts()
+
+}
+
+
+class "Multimetro" {
+{method} +Get Volts()
+
+}
+"Instrumento" <|-- "Multimetro"
+"Mediciones" <|.. "Multimetro"
+
+
+
+class "Osciloscopio" {
+{method} +Get Graph()
+{method} +Get Volts()
+
+}
+"Instrumento" <|-- "Osciloscopio"
+"Mediciones" <|.. "Osciloscopio"
+
+
+
+
+@enduml
+....
+
+=== Arduino.lvclass
+
+*Responsibility:*
+No description found (add content in lvclass description)
+
+*Version:* 1.0.0.0
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "Arduino" {
+{method} +Get Volts()
+
+}
+"Mediciones" <|.. "Arduino"
+interface "Mediciones" {}
+
+
+
+
+@enduml
+....
+
+.Functions (non private scope only)
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name|Connector pane|Description|S.|R.|I.
+
+|Get Volts
+|:imgpath: Arduino.lvclass_Get_Volts.vi.png
+image:{imgpath}[Arduino.lvclass:Get Volts.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined
+
+=== Contador Actor.lvclass
+
+*Responsibility:*
++++mi contador+++
+
+
+*Version:* 1.0.0.2
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "Contador Actor" {
+{field} -Cuenta : Double Float
+{static} {method} +Contador Actor_Init()
+{method} +CleanUp()
+{method} +Incremento()
+{method} +Decremento()
+{method} +Show Dialog()
+
+}
+
+
+
+@enduml
+....
+
+.Functions (non private scope only)
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name|Connector pane|Description|S.|R.|I.
+
+|Contador Actor_Init
+|:imgpath: Contador_Actor.lvclass_Contador_Actor_Init.vi.png
+image:{imgpath}[Contador Actor.lvclass:Contador Actor_Init.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+
+|CleanUp
+|:imgpath: Contador_Actor.lvclass_CleanUp.vi.png
+image:{imgpath}[Contador Actor.lvclass:CleanUp.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+
+|Incremento
+|:imgpath: Contador_Actor.lvclass_Incremento.vi.png
+image:{imgpath}[Contador Actor.lvclass:Incremento.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+
+|Decremento
+|:imgpath: Contador_Actor.lvclass_Decremento.vi.png
+image:{imgpath}[Contador Actor.lvclass:Decremento.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+
+|Show Dialog
+|:imgpath: Contador_Actor.lvclass_Show_Dialog.vi.png
+image:{imgpath}[Contador Actor.lvclass:Show Dialog.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined
+
+=== Fuente de poder.lvclass
+
+*Responsibility:*
++++Clase generada automaticamente por gds+++
+
+
+*Version:* 1.0.0.2
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "Fuente de poder" {
+{field} -None : Boolean
+{static} {method} +Fuente de poder_Init()
+{method} +CleanUp()
+
+}
+"Instrumento" <|-- "Fuente de poder"
+
+
+
+@enduml
+....
+
+.Functions (non private scope only)
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name|Connector pane|Description|S.|R.|I.
+
+|Fuente de poder_Init
+|:imgpath: Fuente_de_poder.lvclass_Fuente_de_poder_Init.vi.png
+image:{imgpath}[Fuente de poder.lvclass:Fuente de poder_Init.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+
+|CleanUp
+|:imgpath: Fuente_de_poder.lvclass_CleanUp.vi.png
+image:{imgpath}[Fuente de poder.lvclass:CleanUp.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined
+
+=== Generador de funciones.lvclass
+
+*Responsibility:*
+No description found (add content in lvclass description)
+
+*Version:* 1.0.0.2
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "Generador de funciones" {
+{field} -None : Boolean
+{method} +Set VPP()
+
+}
+"Instrumento" <|-- "Generador de funciones"
+
+
+
+@enduml
+....
+
+.Functions (non private scope only)
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name|Connector pane|Description|S.|R.|I.
+
+|Set VPP
+|:imgpath: Generador_de_funciones.lvclass_Set_VPP.vi.png
+image:{imgpath}[Generador de funciones.lvclass:Set VPP.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined
+
+=== Instrumento feo.lvclass
+
+*Responsibility:*
+No description found (add content in lvclass description)
+
+*Version:* 1.0.0.0
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "Instrumento feo" {
+{method} +Get Volts()
+
+}
+"Mediciones" <|.. "Instrumento feo"
+interface "Mediciones" {}
+
+
+
+
+@enduml
+....
+
+.Functions (non private scope only)
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name|Connector pane|Description|S.|R.|I.
+
+|Get Volts
+|:imgpath: Instrumento_feo.lvclass_Get_Volts.vi.png
+image:{imgpath}[Instrumento feo.lvclass:Get Volts.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined
+
+=== Instrumento.lvclass
+
+*Responsibility:*
+No description found (add content in lvclass description)
+
+*Version:* 1.0.0.2
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "Instrumento" {
+{field} +VISA resource name : NoType
+{method} +Close()
+{method} +Initialize()
+
+}
+
+
+
+@enduml
+....
+
+.Functions (non private scope only)
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name|Connector pane|Description|S.|R.|I.
+
+|Read VISA resource name
+|:imgpath: Instrumento.lvclass_Read_VISA_resource_name.vi.png
+image:{imgpath}[Instrumento.lvclass:Read VISA resource name.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: reentrancy-preallocated.png
+image:{imgpath}[reentrancy-preallocated.png]
+|:imgpath: inlined.png
+image:{imgpath}[inlined.png]
+
+|Write VISA resource name
+|:imgpath: Instrumento.lvclass_Write_VISA_resource_name.vi.png
+image:{imgpath}[Instrumento.lvclass:Write VISA resource name.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: reentrancy-preallocated.png
+image:{imgpath}[reentrancy-preallocated.png]
+|:imgpath: inlined.png
+image:{imgpath}[inlined.png]
+
+|Close
+|:imgpath: Instrumento.lvclass_Close.vi.png
+image:{imgpath}[Instrumento.lvclass:Close.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+
+|Initialize
+|:imgpath: Instrumento.lvclass_Initialize.vi.png
+image:{imgpath}[Instrumento.lvclass:Initialize.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined
+
+=== Mediciones.lvclass
+
+*Responsibility:*
+No description found (add content in lvclass description)
+
+*Version:* 1.0.0.0
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+interface "Mediciones" {
+{method} +Get Volts()
+
+}
+
+
+
+@enduml
+....
+
+.Functions (non private scope only)
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name|Connector pane|Description|S.|R.|I.
+
+|Get Volts
+|:imgpath: Mediciones.lvclass_Get_Volts.vi.png
+image:{imgpath}[Mediciones.lvclass:Get Volts.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined
+
+=== Multimetro.lvclass
+
+*Responsibility:*
+No description found (add content in lvclass description)
+
+*Version:* 1.0.0.1
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "Multimetro" {
+{method} +Get Volts()
+
+}
+"Instrumento" <|-- "Multimetro"
+"Mediciones" <|.. "Multimetro"
+interface "Mediciones" {}
+
+
+
+
+@enduml
+....
+
+.Functions (non private scope only)
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name|Connector pane|Description|S.|R.|I.
+
+|Get Volts
+|:imgpath: Multimetro.lvclass_Get_Volts.vi.png
+image:{imgpath}[Multimetro.lvclass:Get Volts.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined
+
+=== Osciloscopio.lvclass
+
+*Responsibility:*
+No description found (add content in lvclass description)
+
+*Version:* 1.0.0.1
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "Osciloscopio" {
+{method} +Get Graph()
+{method} +Get Volts()
+
+}
+"Instrumento" <|-- "Osciloscopio"
+"Mediciones" <|.. "Osciloscopio"
+interface "Mediciones" {}
+
+
+
+
+@enduml
+....
+
+.Functions (non private scope only)
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name|Connector pane|Description|S.|R.|I.
+
+|Get Graph
+|:imgpath: Osciloscopio.lvclass_Get_Graph.vi.png
+image:{imgpath}[Osciloscopio.lvclass:Get Graph.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+
+|Get Volts
+|:imgpath: Osciloscopio.lvclass_Get_Volts.vi.png
+image:{imgpath}[Osciloscopio.lvclass:Get Volts.vi]
+|No description found (add content in vi description)
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|:imgpath: empty.png
+image:{imgpath}[empty.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined
+
+== Legal Information
+
+=== Document creation
+
+This document has been generated using the following tools.
+
+==== Antidoc
+
+Project website: https://wovalab.gitlab.io/open-source/labview-doc-generator/[Antidoc] 
+
+Maintainer website: https://wovalab.com[Wovalab] 
+
+BSD 3-Clause License
+
+Copyright (C) 2019, Wovalab,
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of the copyright holder nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+==== Asciidoc for LabVIEW(TM)
+
+Project website: https://wovalab.gitlab.io/open-source/asciidoc-toolkit/[Asciidoc toolkit] 
+
+Maintainer website: https://wovalab.com[Wovalab] 
+
+BSD 3-Clause License
+
+Copyright (C) 2019, Wovalab,
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of the copyright holder nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+==== Graph Builder
+
+Project website: https://gitlab.com/cgambini/graph-builder[Graph Builder]
+
+BSD 3-Clause License
+
+Copyright (c) 2020, Cyril GAMBINI
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of the copyright holder nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+==== classy Diagram Viewer
+
+Project website: https://gitlab.com/tatiana.boye/classy-diagram-viewer[classy Diagram Viewer]
+
+BSD 3-Clause License
+
+Copyright (c) 2021, Tatiana Boyé
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of the copyright holder nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+=== Product used in the project
+
+Antidoc hasn't been able to detect third party products in the project.
+This is the author's responsibility to list any of the missing product used.
